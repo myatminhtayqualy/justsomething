@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Testing on InfinityFree</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --primary-color: #4f46e5;
+            --success-color: #10b981;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            max-width: 450px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--success-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        .info {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #999;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>CI/CD Deployment Test</h1>
+        <p>GitHub Actions ကနေတစ်ဆင့် InfinityFree ပေါ်ကို အလိုအလျောက် Deploy လုပ်တာ အောင်မြင်သွားပါပြီ။</p>
+        
+        <!-- CI/CD status ကောင်းမွန်ကြောင်း ပြသမယ့် badge -->
+        <span class="badge">● DEPLOYMENT SUCCESSFUL</span>
+
+        <div class="info">
+            Last Updated: <span id="deploy-time">Just now</span>
+        </div>
+    </div>
+
+    <script>
+        // Deployment အချိန်ကို Dynamic ပြသရန် (စမ်းသပ်မှုအတွက်)
+        const options = { timeZone: 'Asia/Yangon', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+        document.getElementById('deploy-time').innerText = new Date().toLocaleTimeString('en-US', options) + ' (MMT)';
+    </script>
+</body>
+</html>
