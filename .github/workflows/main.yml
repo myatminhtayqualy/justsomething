@@ -13,6 +13,17 @@ jobs:
     - name: Get latest code
       uses: actions/checkout@v4
 
+    # 🔍 ဒီအဆင့်က ကုဒ်တွေကို Auto Check (Lint) လုပ်မယ့် အဆင့်ဖြစ်ပါတယ်
+    - name: Lint Code Base
+      uses: super-linter/super-linter@v5
+      env:
+        VALIDATE_ALL_CODEBASE: false # တစ်ခုလုံးမစစ်ဘဲ ပြင်လိုက်တဲ့ ဖိုင်တွေကိုပဲ စစ်ဖို့
+        DEFAULT_BRANCH: main
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub က အလိုအလျောက် ထုတ်ပေးတဲ့ Token
+        VALIDATE_HTML: true  # HTML စစ်မယ်
+        VALIDATE_CSS: true   # CSS စစ်မယ်
+        VALIDATE_JAVASCRIPT_ES: true # JS စစ်မယ်
+
     - name: Sync files via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
